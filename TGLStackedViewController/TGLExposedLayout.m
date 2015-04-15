@@ -121,9 +121,11 @@
 
     CGSize itemSize = self.itemSize;
     
-    if (CGSizeEqualToSize(itemSize, CGSizeZero)) {
-        
-        itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds) - self.layoutMargin.left - self.layoutMargin.right, CGRectGetHeight(self.collectionView.bounds) - self.layoutMargin.top - self.layoutMargin.bottom - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom);
+    if (itemSize.width == 0) {
+        itemSize.width = CGRectGetWidth(self.collectionView.bounds) - self.layoutMargin.left - self.layoutMargin.right;
+    }
+    if (itemSize.height == 0) {
+        itemSize.height = CGRectGetHeight(self.collectionView.bounds) - self.layoutMargin.top - self.layoutMargin.bottom - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom;
     }
 
     NSMutableDictionary *layoutAttributes = [NSMutableDictionary dictionary];
