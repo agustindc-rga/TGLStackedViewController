@@ -134,7 +134,13 @@
 
 - (CGSize)collectionViewContentSize {
     
-    CGSize contentSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), self.layoutMargin.top + self.topReveal * [self.collectionView numberOfItemsInSection:0] + self.layoutMargin.bottom - self.collectionView.contentInset.bottom);
+    CGFloat itemReveal = self.topReveal;
+    
+    if (itemReveal == 0) {
+        itemReveal = CGRectGetHeight(self.collectionView.bounds) - self.layoutMargin.top - self.layoutMargin.bottom - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom;
+    }
+    
+    CGSize contentSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds), self.layoutMargin.top + itemReveal * [self.collectionView numberOfItemsInSection:0] + self.layoutMargin.bottom - self.collectionView.contentInset.bottom);
     
     if (contentSize.height < CGRectGetHeight(self.collectionView.bounds)) {
 
@@ -177,6 +183,9 @@
     
     if (self.filling) {
         itemReveal = floor((CGRectGetHeight(self.collectionView.bounds) - self.layoutMargin.top - self.layoutMargin.bottom - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom) / [self.collectionView numberOfItemsInSection:0]);
+    }
+    else if (itemReveal == 0) {
+        itemReveal = itemSize.height;
     }
 
     // Honor overwritten contentOffset
