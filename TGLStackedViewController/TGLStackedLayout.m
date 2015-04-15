@@ -163,19 +163,20 @@
     // full height
     //
     [self collectionViewContentSize];
+    
+    CGSize itemSize = self.itemSize;
+    
+    if (itemSize.width == 0) {
+        itemSize.width = CGRectGetWidth(self.collectionView.bounds) - self.layoutMargin.left - self.layoutMargin.right;
+    }
+    if (itemSize.height == 0) {
+        itemSize.height = CGRectGetHeight(self.collectionView.bounds) - self.layoutMargin.top - self.layoutMargin.bottom - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom;
+    }
 
     CGFloat itemReveal = self.topReveal;
     
     if (self.filling) {
-        
         itemReveal = floor((CGRectGetHeight(self.collectionView.bounds) - self.layoutMargin.top - self.layoutMargin.bottom - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom) / [self.collectionView numberOfItemsInSection:0]);
-    }
-    
-    CGSize itemSize = self.itemSize;
-    
-    if (CGSizeEqualToSize(itemSize, CGSizeZero)) {
-        
-        itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.bounds) - self.layoutMargin.left - self.layoutMargin.right, CGRectGetHeight(self.collectionView.bounds) - self.layoutMargin.top - self.layoutMargin.bottom - self.collectionView.contentInset.top - self.collectionView.contentInset.bottom);
     }
 
     // Honor overwritten contentOffset
