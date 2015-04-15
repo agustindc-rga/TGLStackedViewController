@@ -26,56 +26,13 @@
 #import <UIKit/UIKit.h>
 
 #import "TGLStackedLayout.h"
+#import "TGLExposedLayout.h"
 
 @interface TGLStackedViewController : UICollectionViewController <UIGestureRecognizerDelegate>
 
 /** The collection view layout object used when all items are collapsed. */
 @property (strong, readonly, nonatomic) TGLStackedLayout *stackedLayout;
-
-/** Margins between collection view and items when exposed.
- *
- * Changes to this property take effect on next
- * item being selected, i.e. exposed.
- *
- * Default value is UIEdgeInsetsMake(40.0, 0.0, 0.0, 0.0)
- */
-@property (assign, nonatomic) UIEdgeInsets exposedLayoutMargin;
-
-/** Size of items when exposed if set to value not equal CGSizeZero.
- *
- * Changes to this property take effect on next
- * item being selected, i.e. exposed.
- *
- * Default value is CGSizeZero
- */
-@property (assign, nonatomic) CGSize exposedItemSize;
-
-/** Amount of overlap for items above exposed item.
- *
- * Changes to this property take effect on next
- * item being selected, i.e. exposed.
- *
- * Default value is 20.0
- */
-@property (assign, nonatomic) CGFloat exposedTopOverlap;
-
-/** Amount of overlap for items below exposed item.
- *
- * Changes to this property take effect on next
- * item being selected, i.e. exposed.
- *
- * Default value is 20.0
- */
-@property (assign, nonatomic) CGFloat exposedBottomOverlap;
-
-/** Number of items overlapping below exposed item.
- *
- * Changes to this property take effect on next
- * item being selected, i.e. exposed.
- *
- * Default value is 1
- */
-@property (assign, nonatomic) NSUInteger exposedBottomOverlapCount;
+@property (strong, readonly, nonatomic) TGLExposedLayout *exposedLayout;
 
 /** Index path of currently exposed item.
  *

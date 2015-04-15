@@ -55,5 +55,6 @@
 @property (assign, nonatomic) NSUInteger bottomOverlapCount;
 
 - (instancetype)initWithExposedItemIndex:(NSInteger)exposedItemIndex;
+@property (assign, nonatomic) NSInteger exposedItemIndex;
 
 @end

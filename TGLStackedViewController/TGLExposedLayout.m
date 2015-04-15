@@ -27,13 +27,15 @@
 
 @interface TGLExposedLayout ()
 
-@property (assign, nonatomic) NSInteger exposedItemIndex;
-
 @property (nonatomic, strong) NSDictionary *layoutAttributes;
 
 @end
 
 @implementation TGLExposedLayout
+
+- (instancetype)init {
+    return [self initWithExposedItemIndex:0];
+}
 
 - (instancetype)initWithExposedItemIndex:(NSInteger)exposedItemIndex {
     

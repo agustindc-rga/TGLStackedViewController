@@ -55,8 +55,6 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
 
 @implementation TGLStackedViewController
 
-@synthesize stackedLayout = _stackedLayout;
-
 - (instancetype)init {
 
     self = [super init];
@@ -96,12 +94,7 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
 - (void)initController {
     
     _stackedLayout = [[TGLStackedLayout alloc] init];
-    
-    _exposedLayoutMargin = UIEdgeInsetsMake(40.0, 0.0, 0.0, 0.0);
-    _exposedItemSize = CGSizeZero;
-    _exposedTopOverlap = 20.0;
-    _exposedBottomOverlap = 20.0;
-    _exposedBottomOverlapCount = 1;
+    _exposedLayout = [[TGLExposedLayout alloc] init];
 }
 
 #pragma mark - View life cycle
@@ -139,15 +132,9 @@ typedef NS_ENUM(NSInteger, TGLStackedViewControllerScrollDirection) {
             
             self.stackedContentOffset = self.collectionView.contentOffset;
             
-            TGLExposedLayout *exposedLayout = [[TGLExposedLayout alloc] initWithExposedItemIndex:exposedItemIndexPath.item];
-            
-            exposedLayout.layoutMargin = self.exposedLayoutMargin;
-            exposedLayout.itemSize = self.exposedItemSize;
-            exposedLayout.topOverlap = self.exposedTopOverlap;
-            exposedLayout.bottomOverlap = self.exposedBottomOverlap;
-            exposedLayout.bottomOverlapCount = self.exposedBottomOverlapCount;
+            self.exposedLayout.exposedItemIndex = exposedItemIndexPath.item;
 
-            [self.collectionView setCollectionViewLayout:exposedLayout animated:YES];
+            [self.collectionView setCollectionViewLayout:self.exposedLayout animated:YES];
             
         } else {
             

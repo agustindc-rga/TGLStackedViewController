@@ -75,7 +75,7 @@
         TGLViewController *controller = segue.destinationViewController;
         
         controller.stackedLayout.layoutMargin = UIEdgeInsetsZero;
-        controller.exposedLayoutMargin = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+        controller.exposedLayout.layoutMargin = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
 
     } else if ([segue.identifier isEqualToString:@"Show with Toolbar"]) {
         
@@ -84,14 +84,14 @@
         TGLViewController *controller = segue.destinationViewController;
         
         controller.stackedLayout.layoutMargin = UIEdgeInsetsZero;
-        controller.exposedLayoutMargin = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+        controller.exposedLayout.layoutMargin = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
 
     } else if ([segue.identifier isEqualToString:@"Show without ExtendedEdges"]) {
         
         TGLViewController *controller = segue.destinationViewController;
         
         controller.stackedLayout.layoutMargin = UIEdgeInsetsZero;
-        controller.exposedLayoutMargin = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+        controller.exposedLayout.layoutMargin = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
         controller.edgesForExtendedLayout = UIRectEdgeNone;
     }
 }
